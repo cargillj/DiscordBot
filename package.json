@@ -1,0 +1,67 @@
+{
+  "name": "@cargillj/discordbot",
+  "version": "0.0.1",
+  "description": "A client for making feature-rich discord bots!",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "scripts": {
+    "pre-commit-message": "echo Performing pre-commit checks... && exit 0",
+    "prepublish": "npm run build",
+    "build": "tsc",
+    "clean": "rimraf build",
+    "test": "NODE_ENV=TEST jest",
+    "release": "standard-version"
+  },
+  "jest": {
+    "roots": [
+      "src"
+    ],
+    "verbose": true
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "npm run test && npm run build"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cargillj/DiscordBot.git"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "discord-bot"
+  ],
+  "author": "cargillj",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cargillj/DiscordBot/issues"
+  },
+  "homepage": "https://github.com/cargillj/DiscordBot#readme",
+  "dependencies": {
+    "@types/node": "^12.11.7",
+    "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+    "node-schedule": "^1.3.2",
+    "typescript": "^3.6.4",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-typescript": "^7.6.0",
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "@types/jest": "^24.0.21",
+    "babel-jest": "^24.9.0",
+    "husky": "^3.0.9",
+    "jest": "^24.9.0",
+    "rimraf": "^3.0.0",
+    "standard-version": "^7.0.0",
+    "ts-jest": "^24.1.0",
+    "win-node-env": "^0.4.0"
+  }
+}
